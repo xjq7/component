@@ -1,11 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.less';
-
-export interface ToastProps {
-  text: string;
-}
-
 let toastContainer: HTMLDivElement;
 
 let toastNode = [];
@@ -31,12 +23,18 @@ function show(options: ToastOptions) {
   toastContainer.appendChild(toast);
   toastContainer.classList.add('x-toast-show');
 
-  setTimeout(() => {
+  const hide = () => {
     toastContainer.removeChild(toast);
+  };
+
+  setTimeout(() => {
+    hide();
     toastContainer.classList.remove('x-toast-show');
   }, time);
+
+  return {
+    hide,
+  };
 }
 
-function hide() {}
-
-export default { show, hide };
+export default { show };

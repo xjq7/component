@@ -7,12 +7,24 @@ import autoprefixer from 'autoprefixer';
 
 export default {
   input: './src/main.ts',
-  output: {
-    dir: 'dist',
-    format: 'umd',
-    globals: { react: 'React', 'react-dom': 'ReactDOM' },
-    name: 'cmp',
-  },
+  output: [
+    {
+      file: 'dist/x.umd.js',
+      format: 'umd',
+      globals: { react: 'React', 'react-dom': 'ReactDOM' },
+      name: 'cmp',
+    },
+    {
+      file: 'dist/x.esm.js',
+      format: 'es',
+      globals: { react: 'React', 'react-dom': 'ReactDOM' },
+    },
+    {
+      file: 'dist/x.cjs.js',
+      format: 'cjs',
+      globals: { react: 'React', 'react-dom': 'ReactDOM' },
+    },
+  ],
   external: ['react', 'react-dom'],
   plugins: [
     typescript(),
@@ -21,7 +33,7 @@ export default {
     postcss({
       plugins: [autoprefixer(), cssnano()],
       use: ['less'],
-      extract: true,
+      extract: 'x.css',
     }),
   ],
 };

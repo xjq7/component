@@ -1,7 +1,6 @@
-import 'main.less';
-import Toast, { ToastProps } from './Toast';
+import Toast, { ToastOptions } from './Toast';
 import Button, { ButtonProps } from './Button';
 
-export { ToastProps, ButtonProps };
+export { ToastOptions, ButtonProps };
 
 export { Toast, Button };
